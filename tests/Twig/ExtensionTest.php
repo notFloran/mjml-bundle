@@ -23,8 +23,8 @@ TWIG;
         $template = $this->getTemplate($twigTemplate);
 
         $html = $template->render([]);
-        $this->assertContains('html', $html);
-        $this->assertContains('Hello Floran from MJML and Symfony', $html);
+        $this->assertStringContains('html', $html);
+        $this->assertStringContains('Hello Floran from MJML and Symfony', $html);
     }
 
     private function getTemplate($template): TemplateWrapper
@@ -36,5 +36,24 @@ TWIG;
         $twig->addExtension(new Extension($mjmlRenderer));
 
         return $twig->load('index');
+    }
+
+    /**
+     * Allow to use PHPUnit < and > 9.
+     *
+     * @param $needle
+     * @param $haystack
+     *
+     * @return void
+     */
+    public function assertStringContains($needle, $haystack)
+    {
+        if (method_exists($this, 'assertStringContainsString')) {
+            parent::assertStringContainsString($needle, $haystack);
+
+            return;
+        }
+
+        $this->assertContains($needle, $haystack);
     }
 }

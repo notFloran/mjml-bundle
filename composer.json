@@ -17,23 +17,28 @@
     "authors": [
         {
             "name": "Floran Brutel",
-            "email": "fbrutel@akollade.fr"
+            "email": "bonjour@floran.fr"
         }
     ],
     "require": {
         "php": ">=7.1.0",
-        "symfony/process": "^3.4 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
-        "symfony/twig-bundle": "^3.4 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
-        "symfony/dependency-injection": "^3.4 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
+        "symfony/process": "^3.4 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
+        "symfony/twig-bundle": "^3.4 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0",
+        "symfony/dependency-injection": "^3.4 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12.0",
-        "phpunit/phpunit": "^7.0|^8.0",
-        "matthiasnoback/symfony-config-test": "^4.1",
+        "phpunit/phpunit": "^7.0|^8.0|^9.0",
+        "matthiasnoback/symfony-config-test": "^4.1|^5.2|^6.1",
         "symplify/easy-coding-standard": "^9.0"
     },
     "scripts": {
         "cs-check": "vendor/bin/ecs check tests src",
         "cs-fix": "vendor/bin/ecs check tests src --fix"
+    },
+    "config": {
+        "audit": {
+            "block-insecure": false
+        }
     }
 }
