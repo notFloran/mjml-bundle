@@ -35,5 +35,10 @@
     "scripts": {
         "cs-check": "vendor/bin/ecs check tests src",
         "cs-fix": "vendor/bin/ecs check tests src --fix"
+    },
+    "config": {
+        "audit": {
+            "block-insecure": false
+        }
     }
 }
