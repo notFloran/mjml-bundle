@@ -75,10 +75,11 @@ class BinaryRendererTest extends AbstractTestCase
     }
 
     /**
-     * Allow to use PHPUnit < and > 9
+     * Allow to use PHPUnit < and > 9.
      *
      * @param $needle
      * @param $haystack
+     *
      * @return void
      */
     public function assertStringContains($needle, $haystack)
