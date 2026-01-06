@@ -3,6 +3,7 @@
 namespace NotFloran\MjmlBundle\DependencyInjection;
 
 use NotFloran\MjmlBundle\Renderer\BinaryRenderer;
+use NotFloran\MjmlBundle\Renderer\MjmlPhpRenderer;
 use NotFloran\MjmlBundle\Renderer\RendererInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -29,6 +30,10 @@ class MjmlExtension extends Extension
             $rendererDefinition->addArgument($config['options']['validation_level']);
             $rendererDefinition->addArgument($config['options']['node']);
             $rendererDefinition->addArgument($config['options']['mjml_version']);
+            $container->setDefinition($rendererDefinition->getClass(), $rendererDefinition);
+            $rendererServiceId = $rendererDefinition->getClass();
+        } elseif ('mjml_php' === $config['renderer']) {
+            $rendererDefinition = new Definition(MjmlPhpRenderer::class);
             $container->setDefinition($rendererDefinition->getClass(), $rendererDefinition);
             $rendererServiceId = $rendererDefinition->getClass();
         } elseif ('service' === $config['renderer']) {
