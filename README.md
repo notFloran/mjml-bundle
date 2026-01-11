@@ -217,35 +217,6 @@ public function sendEmail(MailerInterface $mailer, RendererInterface $mjml)
 }
 ```
 
-## SwiftMailer integration
-
-*❗ This integration is deprecated and will be removed in the next major version.*
-
-Declare the following service:
-
-```yaml
-NotFloran\MjmlBundle\SwiftMailer\MjmlPlugin:
-    tags: [swiftmailer.default.plugin]
-```
-
-Create a SwiftMailer message with a MJML body (without `{% mjml %}`) and with `text/mjml` as content-type:
-
-```php
-$message = (new \Swift_Message('Hello Email'))
-    ->setFrom('send@example.com')
-    ->setTo('recipient@example.com')
-    ->setBody(
-        $this->renderView('mail/example.mjml.twig'),
-        'text/mjml'
-    );
-
-$mailer->send($message);
-```
-
-The plugin will automatically render the MJML body and replace the body with the rendered HTML.
-
-In the case where a spool is used: the MJML content is save in the spool and render when the spool is flushed.
-
 ## License
 
 [MjmlBundle](https://github.com/notFloran/mjml-bundle) is licensed under the [MIT license](LICENSE).
