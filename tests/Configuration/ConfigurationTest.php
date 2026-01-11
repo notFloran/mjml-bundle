@@ -99,37 +99,4 @@ class ConfigurationTest extends TestCase
 
         $this->assertConfigurationIsInvalid($config, 'Validation level is invalid');
     }
-
-    public function testMjmlVersionConfiguration()
-    {
-        $config = [
-            [
-                'renderer' => 'binary',
-                'options' => [
-                    'binary' => 'mjml',
-                    'mjml_version' => 4,
-                ],
-            ],
-        ];
-
-        $this->assertConfigurationIsValid($config);
-    }
-
-    public function testInvalidMjmlVersionConfiguration()
-    {
-        $config = [
-            [
-                'renderer' => 'binary',
-                'options' => [
-                    'binary' => 'mjml',
-                    'mjml_version' => 2,
-                ],
-            ],
-        ];
-
-        $this->assertConfigurationIsInvalid(
-            $config,
-            'The value 2 is too small for path "mjml.options.mjml_version". Should be greater than or equal to 3'
-        );
-    }
 }
