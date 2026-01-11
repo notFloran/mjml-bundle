@@ -3,7 +3,7 @@
 [![Latest Stable Version](https://poser.pugx.org/notfloran/mjml-bundle/v/stable.svg)](https://packagist.org/packages/notfloran/mjml-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/notfloran/mjml-bundle/v/unstable.svg)](https://packagist.org/packages/notfloran/mjml-bundle)
 
-Bundle to use [MJML](https://mjml.io/) 3 and 4 with Symfony >= 3.
+Bundle to use [MJML](https://mjml.io/) 4 with Symfony >= 3.
 
 ## Installation
 
