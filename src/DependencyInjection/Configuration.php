@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->enumNode('renderer')
-                    ->values(['binary', 'service'])
+                    ->values(['binary', 'service', 'mjml_php'])
                     ->defaultValue('binary')
                 ->end()
                 ->arrayNode('options')
