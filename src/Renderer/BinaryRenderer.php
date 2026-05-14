@@ -6,9 +6,6 @@ use Symfony\Component\Process\Process;
 
 final class BinaryRenderer implements RendererInterface
 {
-    private const VERSION_4 = 4;
-    private const VERSION_BEFORE_4 = 3;
-
     /**
      * @var string
      */
@@ -56,9 +53,9 @@ final class BinaryRenderer implements RendererInterface
             $process = new Process($command);
             $process->mustRun();
 
-            $this->mjmlVersion = self::VERSION_4;
-            if (false === strpos($process->getOutput(), 'mjml-core: 4.')) {
-                $this->mjmlVersion = self::VERSION_BEFORE_4;
+            $this->mjmlVersion = 4;
+            if (1 === preg_match('/mjml-core:\s*(\d+)\./', $process->getOutput(), $matches)) {
+                $this->mjmlVersion = (int) $matches[1];
             }
         }
 
@@ -77,14 +74,14 @@ final class BinaryRenderer implements RendererInterface
         array_push($command, $this->bin, '-i', '-s');
 
         $strictArgument = '-l';
-        if (self::VERSION_4 === $version) {
+        if ($version >= 4) {
             $strictArgument = '--config.validationLevel';
         }
 
         array_push($command, $strictArgument, $this->validationLevel);
 
         if (true === $this->minify) {
-            if (self::VERSION_4 === $version) {
+            if ($version >= 4) {
                 array_push($command, '--config.minify', 'true');
             } else {
                 $command[] = '-m';
