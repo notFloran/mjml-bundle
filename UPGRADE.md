@@ -1,5 +1,9 @@
 # Upgrade
 
+## 4.0.0
+
+`NotFloran\MjmlBundle\SwiftMailer\MjmlPlugin` has been removed. If you still need SwiftMailer support, copy the class into your project.
+
 ## 3.4.0
 
 `NotFloran\MjmlBundle\SwiftMailer\MjmlPlugin` is deprecated and will be removed in v4, you must copy and paste the class in your project.
